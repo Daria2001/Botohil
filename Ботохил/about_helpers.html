@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            text-align: justify;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cwitw.ru/game/pic/back/background5318.png') repeat;
+            filter: blur(1px);
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 50px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a:link, a:visited, a:active{
+            font-style: italic;
+            cursor: pointer;
+            color:#fff;
+            text-decoration: none;
+        }
+
+        a:hover{
+            font-style: italic;
+            color: #b9b8b8;
+        }
+
+        #game {
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 100%;
+        }
+
+        #buttons button {
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 100%;
+            color: #fff;
+            background-color: #15141400;
+            border: 2px solid #ffffff;
+            border-radius: 5px;
+        }
+
+        #buttons button:hover, #next:hover, #restart:hover {
+            color: #b9b8b8;
+            border: 2px solid #b9b8b8;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #hint {
+            margin-top: 10px;
+            color: #b9b8b8;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify; 
+        }
+
+        #next, #restart {
+            margin-top: 20px;
+            padding: 10px;
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 100%;
+            color: #fff;
+            background-color: #15141400;
+            border: 2px solid #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <p>– О здоровье клана заботится
+            <a href="https://vk.com/id367986120">Искра Жизни</a> (110091). 
+            Но тяжело бы ей пришлось без её трудяжек-помощников – отряда травников.  
+            <a href="https://vk.com/nadiro_d">Мерцающее Созвездие</a> (119225), 
+            <a href="https://vk.com/fblrk">Пухощёк</a> (82921), 
+            <a href="https://vk.com/zovushek">Сероволк</a> (69143) и 
+            <a href="https://vk.com/id738288195">Сладкозвучная Ложь</a> (74069)
+            во всем помогают и выручают нашу целительницу. Если ты не можешь найти нужную траву или у тебя есть вопрос, касающийся целительства, смело можешь обращаться ко всем упомянутым выше котам. Но помни, что в нашем клане действует система самолечения, а это значит, что ты в любой момент можешь самостоятельно воспользоваться необходимой травой. 
+            <br><br>
+            Если тебе интересно больше узнать о том, чем занимаются целительница и травники, то можешь пройти мини-игру "Верно/неверно".
+        </p>
+
+
+        <div id="game">
+            <h2>Верно ли утверждение?</h2>
+            <p id="question">Утверждение</p>
+            <div id="buttons">
+                <button onclick="checkAnswer(true)">Верно</button>
+                <button onclick="checkAnswer(false)">Неверно</button>
+            </div>
+            <p id="hint"></p>
+            <p id="result"></p>
+            <button id="next" onclick="nextQuestion()">Следующий вопрос</button>
+            <button id="restart" onclick="restartGame()">Начать заново</button>
+        </div>
+
+
+        <!-- НЕОБХОДИМО ВСТАВИТЬ ССЫЛКИ -->
+
+        <p> Казалось, что кот смотрел на собеседника и видел его. Но то лишь только казалось. Хотя впрочем, может он видит то, что недоступно обычным котам?
+            <br> – Идеальных нет, правда же? Но мы всегда можем становиться лучше. И ты можешь помочь стать целительской сфере лучше. <a href="https://forms.gle/E5F2nqcGohD9qZGh7">Это книга жалоб и предложений, если что – пиши не стеснясй, там все полностью анонимно.</a><br><br>
+            <br>–У тебя еще остались вопросы?<br><br><br>
+            <a href="ссылка на hill">– Могут мне помочь с лечением?</a><br><br>
+            <a href="ссылка на ruls_final">– Совсем из головы вылетели правила, связанные с целительской сферой. Можешь напомнить, пожалуйста?</a><br><br>
+            <a href="ссылка на becoming">– Как стать травником или познающим/познающей целительство?.</a><br><br>
+            <a href="ссылка на healers">– Ты здесь все время обитаешь, точно слышал рассказы о прошлых целителях и познающих целительство. Расскажешь?</a><br><br>
+            <a href="https://cwitw.ru/game/lock">– Пожалуй, вопросов больше нет. Пока!</a><br><br>
+        </p>
+    </div>
+
+        <script>
+            const questions = [
+            { text: "У травников мало работы.", correct: false, hint: "На самом деле травники те еще трудяги! Они проверяют запасы, пополняют их, следят за порядком в целительских локациях и ямах, сообщают о нарушителях... Много у них работы!." },
+            { text: "Целительница следит за тем, чтоб в Поднебесном клане всегда были доступны котам все травы, которые необходимы для лечения.", correct: true, hint: "Одна из обязанностей целительницы – следить за тем, чтоб все необходимые травы были доступны котам и чтоб в любой момент житель или гость Поднебесного клана мог вылечиться." },
+            { text: "Травники собирают травы и заботливо их складывают в места хранения трав.", correct: true, hint: "Сбор трав и их перенос в места хранения одна из обязанностей травников." },
+            { text: "Целительница отвечает лишь за травы и более ни за что ответсвенность не несет.", correct: false, hint: "Целительница, как и любой другой член верхушки, несет отвественность за развитие клана, комфорт его обитателей, решение спорных ситуаций. На её плечах большая отвественность и её жизнь не такая уж и беззаботная, как кажется. Кроме того, она возглавляет отряд травников и обязана постоянно улучшать как работу отряда, так и целительскую сферу в целом." },
+            { text: "Травы в Скрипучем дупле появляются сами.", correct: false, hint: "В основном травы пополняют травники, но иногда это делает и целительница."},
+            { text: "Травники не следят за нарушениями, связанными с целительской сферой, ведь это работа надзирателей.", correct: false, hint: "Травники должны сообщить целительнице о замеченом нарушении." },
+            { text: "Целительница обязана делать все возможное, чтоб в отряде не возникало конфликтов.", correct: true, hint: "Целительница несет отвтсвенность за свой отряд и атмосферу в нем. Даже если конфликтная ситуация произошла, целительниа должна решить ее." },
+            { text: "Травники переодичсеки проверяют места хранения трав и составляют список сколько и каких трав нужно собрать.", correct: true, hint: "Проще работать, когда знаешь где что требуется сделать, поэтому иногда травники делают обход мест хранения и составляют список куда сколько надо дособирать трав." },
+            { text: "У трав в местах хранения нет определенного количества и кладут их туда столько, сколько смогут.", correct: false, hint: "В каждое место хранения кладется определенное количество определенной травы." },
+            { text: "Работа травников очень разнообразна.", correct: false, hint: "К сожалению, работа травников часто монотонна." },
+            { text: "С работой травников легко справиться с телефона или планшета.", correct: false, hint: "Справиться с работой травников с телефона или планшета довольно трудно. Не сказать, что совесм уж невозможно, но гораздо эффективнее работать с компьютера или ноутбука." },
+            { text: "Целительница никогда не делает то, что входит в обязанности травников.", correct: false, hint: "Целительница может и должна делать все то, что делает её помощники, если по каким-то причинам работа не была сделана, но баллы за это не получает. Ведь это её прямая обязанность: нести отвественность за то, чтоб работа отряда выполнялась качественно и в срок." },
+            ];
+    
+            let currentQuestion = 0;
+
+        function loadQuestion() {
+            document.getElementById("question").innerText = questions[currentQuestion].text;
+            document.getElementById("result").innerText = "";
+            document.getElementById("hint").innerText = "";
+            document.getElementById("next").style.display = "none";
+            document.getElementById("restart").style.display = "none";
+        }
+
+        function checkAnswer(answer) {
+            const isCorrect = answer === questions[currentQuestion].correct;
+            const resultText = isCorrect ? "Правильно!" : "Попробуй еще раз!";
+            document.getElementById("result").innerText = resultText;
+
+            if (!isCorrect) {
+                document.getElementById("hint").innerText = questions[currentQuestion].hint;
+            } else {
+                document.getElementById("hint").innerText = "";
+                document.getElementById("next").style.display = "block"; 
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("question").innerText = "На этом все. Теперь ты знаешь немного больше о целительнице и её помощниках – трудяжках отряда травников.";
+                document.getElementById("result").innerText = ""; 
+                document.getElementById("hint").innerText = "";   
+                document.getElementById("buttons").style.display = "none";
+                document.getElementById("next").style.display = "none";
+                document.getElementById("restart").style.display = "block";
+            }
+        }
+
+        function restartGame() {
+            currentQuestion = 0;
+            document.getElementById("buttons").style.display = "block";
+            loadQuestion();
+        }
+
+        // Загрузить первый вопрос при старте
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

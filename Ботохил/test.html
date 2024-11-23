@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            text-align: justify;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cwitw.ru/game/pic/back/background5318.png') repeat;
+            filter: blur(1px);
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 50px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .response-content {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .response-content img {
+            max-width: 150px;
+            height: auto;
+            margin-right: 20px; 
+        }
+
+        .response-content p {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        a:link, a:visited, a:active {
+            font-style: italic;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            font-style: italic;
+            color: #b9b8b8;
+        }
+
+        .exit {
+            margin-top: 10%;
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .result {
+            display: none;
+            font-weight: bold;
+        }
+
+        .result-button-container {
+            margin-top: 10%;
+            text-align: center;
+        }
+
+        button{
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 100%;
+            color: #fff;
+            background-color: #15141400;
+            border: 2px solid #ffffff;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            color: #b9b8b8;
+            border: 2px solid #b9b8b8;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <p id="initialText">– Сначала я буду называть тебе мысли, которые появляются при болезни, а тебе нужно будет выбрать из списка название той травы, которой можно вылечить болезнь с такой мыслью.</p>
+
+        <form id="quizForm">
+            <div class="question">
+                <p>1) У меня болит лапа</p>
+                <input type="radio" name="q1" value="wrong"> Хвощ<br>
+                <input type="radio" name="q1" value="correct"> Щавель<br>
+                <input type="radio" name="q1" value="wrong"> Лопух<br>
+                <input type="radio" name="q1" value="wrong"> Зверобой<br>
+                <input type="radio" name="q1" value="wrong"> Песчанка<br>
+                <input type="radio" name="q1" value="wrong"> Вероника<br>
+                <input type="radio" name="q1" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q1" value="wrong"> Мёд<br>
+                <input type="radio" name="q1" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q1" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>2) У меня подозрительно мокрый нос</p>
+                <input type="radio" name="q2" value="wrong"> Хвощ<br>
+                <input type="radio" name="q2" value="wrong"> Щавель<br>
+                <input type="radio" name="q2" value="wrong"> Лопух<br>
+                <input type="radio" name="q2" value="correct"> Зверобой<br>
+                <input type="radio" name="q2" value="wrong"> Песчанка<br>
+                <input type="radio" name="q2" value="wrong"> Вероника<br>
+                <input type="radio" name="q2" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q2" value="wrong"> Мёд<br>
+                <input type="radio" name="q2" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q2" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>3) Я чувствую жар</p>
+                <input type="radio" name="q3" value="wrong"> Хвощ<br>
+                <input type="radio" name="q3" value="wrong"> Щавель<br>
+                <input type="radio" name="q3" value="wrong"> Лопух<br>
+                <input type="radio" name="q3" value="wrong"> Зверобой<br>
+                <input type="radio" name="q3" value="wrong"> Песчанка<br>
+                <input type="radio" name="q3" value="wrong"> Вероника<br>
+                <input type="radio" name="q3" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q3" value="correct"> Мёд<br>
+                <input type="radio" name="q3" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q3" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>4) Я часто кашляю</p>
+                <input type="radio" name="q4" value="wrong"> Хвощ<br>
+                <input type="radio" name="q4" value="wrong"> Щавель<br>
+                <input type="radio" name="q4" value="wrong"> Лопух<br>
+                <input type="radio" name="q4" value="wrong"> Зверобой<br>
+                <input type="radio" name="q4" value="wrong"> Песчанка<br>
+                <input type="radio" name="q4" value="wrong"> Вероника<br>
+                <input type="radio" name="q4" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q4" value="wrong"> Мёд<br>
+                <input type="radio" name="q4" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q4" value="correct"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>5) Я очень часто кашляю</p>
+                <input type="radio" name="q5" value="wrong"> Хвощ<br>
+                <input type="radio" name="q5" value="wrong"> Щавель<br>
+                <input type="radio" name="q5" value="wrong"> Лопух<br>
+                <input type="radio" name="q5" value="wrong"> Зверобой<br>
+                <input type="radio" name="q5" value="correct"> Песчанка<br>
+                <input type="radio" name="q5" value="wrong"> Вероника<br>
+                <input type="radio" name="q5" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q5" value="wrong"> Мёд<br>
+                <input type="radio" name="q5" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q5" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>6) Я задыхаюсь</p>
+                <input type="radio" name="q6" value="wrong"> Хвощ<br>
+                <input type="radio" name="q6" value="wrong"> Щавель<br>
+                <input type="radio" name="q6" value="wrong"> Лопух<br>
+                <input type="radio" name="q6" value="wrong"> Зверобой<br>
+                <input type="radio" name="q6" value="wrong"> Песчанка<br>
+                <input type="radio" name="q6" value="wrong"> Вероника<br>
+                <input type="radio" name="q6" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q6" value="wrong"> Мёд<br>
+                <input type="radio" name="q6" value="correct"> Мать-и-мачеха<br>
+                <input type="radio" name="q6" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>7) Меня тошнит</p>
+                <input type="radio" name="q7" value="wrong"> Хвощ<br>
+                <input type="radio" name="q7" value="wrong"> Щавель<br>
+                <input type="radio" name="q7" value="wrong"> Лопух<br>
+                <input type="radio" name="q7" value="wrong"> Зверобой<br>
+                <input type="radio" name="q7" value="wrong"> Песчанка<br>
+                <input type="radio" name="q7" value="wrong"> Вероника<br>
+                <input type="radio" name="q7" value="correct"> Тысячелистник<br>
+                <input type="radio" name="q7" value="wrong"> Мёд<br>
+                <input type="radio" name="q7" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q7" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>8) Мое израненное тело болит</p>
+                <input type="radio" name="q8" value="correct"> Хвощ<br>
+                <input type="radio" name="q8" value="wrong"> Щавель<br>
+                <input type="radio" name="q8" value="wrong"> Лопух<br>
+                <input type="radio" name="q8" value="wrong"> Зверобой<br>
+                <input type="radio" name="q8" value="wrong"> Песчанка<br>
+                <input type="radio" name="q8" value="wrong"> Вероника<br>
+                <input type="radio" name="q8" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q8" value="wrong"> Мёд<br>
+                <input type="radio" name="q8" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q8" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>9) Я чувствую жар, расползающийся от крысиных укусов</p>
+                <input type="radio" name="q9" value="wrong"> Хвощ<br>
+                <input type="radio" name="q9" value="wrong"> Щавель<br>
+                <input type="radio" name="q9" value="correct"> Лопух<br>
+                <input type="radio" name="q9" value="wrong"> Зверобой<br>
+                <input type="radio" name="q9" value="wrong"> Песчанка<br>
+                <input type="radio" name="q9" value="wrong"> Вероника<br>
+                <input type="radio" name="q9" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q9" value="wrong"> Мёд<br>
+                <input type="radio" name="q9" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q9" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>10) Я чувствую слабость во всем теле</p>
+                <input type="radio" name="q10" value="wrong"> Хвощ<br>
+                <input type="radio" name="q10" value="wrong"> Щавель<br>
+                <input type="radio" name="q10" value="wrong"> Лопух<br>
+                <input type="radio" name="q10" value="wrong"> Зверобой<br>
+                <input type="radio" name="q10" value="wrong"> Песчанка<br>
+                <input type="radio" name="q10" value="correct"> Вероника<br>
+                <input type="radio" name="q10" value="wrong"> Тысячелистник<br>
+                <input type="radio" name="q10" value="wrong"> Мёд<br>
+                <input type="radio" name="q10" value="wrong"> Мать-и-мачеха<br>
+                <input type="radio" name="q10" value="wrong"> Пижма<br>
+            </div>
+            
+            <div class="question">
+                <p>11) Чем лечить первую степень слепоты?</p>
+                <input type="radio" name="q11" value="wrong"> Мёд<br>
+                <input type="radio" name="q11" value="wrong"> Чабрец<br>
+                <input type="radio" name="q11" value="correct"> Чистотел<br>
+                <input type="radio" name="q11" value="wrong"> Каплей воды<br>
+                <input type="radio" name="q11" value="wrong"> Лопух<br>
+                <input type="radio" name="q11" value="wrong"> Просьбой к Сепве вылечить зрение<br>
+                <input type="radio" name="q11" value="wrong"> Хвощ<br>
+            </div>
+            
+            <div class="question">
+                <p>12) Стоит ли сдаваться, если не получилось вылечить первую степень слепоты с первого, десятого или даже сотого раза?</p>
+                <input type="radio" name="q12" value="wrong"> Первая степень слепоты не лечится, поэтому пытаться ее лечить бессмысленно<br>
+                <input type="radio" name="q12" value="wrong"> Если уж после сотого раза не вышло, то явно что-то идет не так…<br>
+                <input type="radio" name="q12" value="correct"> Не стоит. Нужно запастись терпением. Иногда требуется даже тысяча попыток.<br>
+            </div>
+            
+            <div class="result-button-container"><button type="button" onclick="checkAnswers()">Проверить ответы</button></div>
+        </form>
+        
+        <div id="result" class="result"></div>
+
+        <div class="exit"><a href="https://cwitw.ru/game/lock">Вернуться в игровую</a></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+            const initialText = document.getElementById('initialText');
+            let correct = true;
+            let allAnswered = true;
+            const questions = form.querySelectorAll('.question');
+
+            questions.forEach(question => {
+                const selected = question.querySelector('input[type="radio"]:checked');
+                if (!selected) {
+                    allAnswered = false;
+                } else if (selected.value === 'wrong') {
+                    correct = false;
+                }
+            });
+
+            if (!allAnswered) {
+                resultDiv.textContent = "Пожалуйста, ответь на все вопросы";
+                resultDiv.style.display = 'block';
+            } else if (correct) {
+                resultDiv.textContent = "Отлично! Вижу, у тебя хорошие знания. У меня кое-что завалялось тут для тебя.";
+                form.style.display = 'none';
+                resultDiv.style.display = 'block';
+                initialText.style.display = 'none';
+            } else {
+                resultDiv.textContent = "– Есть тебе еще чему поучиться… Ну не страшно, приходи ко мне ещё, может тогда получится ответить на все вопросы верно и получить предмет?";
+                form.style.display = 'none';
+                resultDiv.style.display = 'block';
+                initialText.style.display = 'none';
+            }
+
+            form.reset();
+        }
+
+        window.addEventListener('pageshow', function(event) {
+            const form = document.getElementById('quizForm');
+            if (event.persisted) { // проверка, загружается ли страница из кэша (true для кнопки "назад")
+                form.reset();
+            }
+        });
+
+    </script>
+
+</body>
+</html>

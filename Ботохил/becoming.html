@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            text-align: justify;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cwitw.ru/game/pic/back/background5318.png') repeat;
+            filter: blur(1px);
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 50px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .error, .success {
+            color: #b9b8b8;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a:link, a:visited, a:active{
+            font-style: italic;
+            cursor: pointer;
+            color:#fff;
+            text-decoration: none;
+        }
+
+        a:hover{
+            font-style: italic;
+            color: #b9b8b8;
+        }
+
+        button{
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 100%;
+            color: #fff;
+            background-color: #15141400;
+            border: 2px solid #ffffff;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            color: #b9b8b8;
+            border: 2px solid #b9b8b8;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container">
+
+        <p>– Иногда целительница сама приглашает в травники или выбирает познающего или познающую целительство, а иногда проходит набор. Хм… Кажется помню какие-то условия… Точно! Высокая активность, наличие странички во “Вконтакте”, постоянный доступ к персональному компьютеру или ноутбуку, а также усидчивость. Но ты можешь пройти тест, который показал бы, смог ли бы ты пройти в отряд травников. Однако помни, положительный результат не гарантирует прохождения в отряд, тест сделан в развлекательных целях!
+            <br>К познающему или познающей целительство требования выше: грамотность, ответственность, возраст не больше ста лун. Вот что я помню, но кажется их было больше... Да и это так, целительница как-то вскольз упомянула и я услышал, да запомнил. Думаю еще что-то есть, но это самое-самое основное. </p>
+
+            <h2>Подойдет ли тебе отряд травников?</h2>
+            <form>
+                <p>У тебя есть исправный компьютер/ноутбук, к которому у тебя есть постоянный доступ?</p>
+                <input type="radio" id="q1a1" name="q1" value="1">
+                <label for="q1a1">Да</label><br>
+                <input type="radio" id="q1a2" name="q1" value="2">
+                <label for="q1a2">Нет</label><br><br>
+        
+                <p>Ты предпочитаешь играть с телефона?</p>
+                <input type="radio" id="q2a1" name="q2" value="1">
+                <label for="q2a1">Да</label><br>
+                <input type="radio" id="q2a2" name="q2" value="2">
+                <label for="q2a2">Нет</label><br><br>
+        
+                <p>Как ты считаешь, у отряда травников мало работы?</p>
+                <input type="radio" id="q3a1" name="q3" value="1">
+                <label for="q3a1">Да</label><br>
+                <input type="radio" id="q3a2" name="q3" value="2">
+                <label for="q3a2">Нет</label><br><br>
+        
+                <p>Ты ненавидишь монотонную работу?</p>
+                <input type="radio" id="q4a1" name="q4" value="1">
+                <label for="q4a1">Да</label><br>
+                <input type="radio" id="q4a2" name="q4" value="2">
+                <label for="q4a2">Нет</label><br><br>
+        
+                <p>У тебя есть страничка во "Вконтакте"? </p>
+                <input type="radio" id="q5a1" name="q5" value="1">
+                <label for="q5a1">Да</label><br>
+                <input type="radio" id="q5a2" name="q5" value="2">
+                <label for="q5a2">Нет</label><br><br>
+
+                <p>Хватает ли у тебя терпения объяснять по несколько раз одно и то же разными словами, даже если это кажется очень простым и понятным?</p>
+                <input type="radio" id="q6a1" name="q6" value="1">
+                <label for="q6a1">Да</label><br>
+                <input type="radio" id="q6a2" name="q6" value="2">
+                <label for="q6a2">Нет</label><br><br>
+
+                <p>Убираешь ли ты дичь после охоты?</p>
+                <input type="radio" id="q7a1" name="q7" value="1">
+                <label for="q7a1">Да</label><br>
+                <input type="radio" id="q7a2" name="q7" value="2">
+                <label for="q7a2">Нет</label><br><br>
+                   
+                <p>Нравится ли тебе система самолечения?</p>
+                <input type="radio" id="q8a1" name="q8" value="1">
+                <label for="q8a1">Да</label><br>
+                <input type="radio" id="q8a2" name="q8" value="2">
+                <label for="q8a2">Нет</label><br><br>
+
+                <p>Ты активно учавствуешь в жизни клана?</p>
+                <input type="radio" id="q9a1" name="q9" value="1">
+                <label for="q9a1">Да</label><br>
+                <input type="radio" id="q9a2" name="q9" value="2">
+                <label for="q9a2">Нет</label><br><br>
+
+                <p>Если ты заметишь нарушение, то сразу же сообщишь об этом во всех чатах?</p>
+                <input type="radio" id="q10a1" name="q10" value="1">
+                <label for="q10a1">Да</label><br>
+                <input type="radio" id="q10a2" name="q10" value="2">
+                <label for="q10a2">Нет</label><br><br>
+
+            </form>
+
+            <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+            <button type="button" onclick="resetAnswers()">Очистить ответы</button>
+
+            <div id="result"></div>
+
+        <p> <br>Житель Скрипучего дупла лег, грустно опустив голову на лапы и вздохнул:
+            <br> – Жаль мне травником не быть... Помогаю, но... Не то все это. Да ладно, забудем. Что важнее сейчас: есть ли у тебя еще ко мне вопросы?<br><br><br>
+
+            <!-- НЕОБХОДИМО ВСТАВИТЬ ССЫЛКИ -->
+             
+            <a href="ссылка на hill">– Могут мне помочь с лечением?</a><br><br>
+            <a href="ссылка на ruls_final">– Совсем из головы вылетели правила, связанные с целительской сферой. Можешь напомнить, пожалуйста?</a><br><br>
+            <a href="ссылка на about_helpers">– Расскажи, пожалуйста, о целительнице и травниках.</a><br><br> 
+            <a href="ссылка на  healers;">– Ты здесь все время обитаешь, точно слышал рассказы о прошлых целителях и познающих целительство. Расскажешь?</a><br><br>
+            <a href="https://cwitw.ru/game/lock">– Пожалуй, вопросов больше нет. Пока!</a><br><br>
+        </p>
+        
+    </div>
+
+    <script>
+        function checkAnswers() {
+            var correctAnswers = ["q1a1", "q2a2", "q3a2", "q4a2", "q5a1", "q6a1", "q7a1", "q8a1", "q9a1", "q10a2"];
+            var resultDiv = document.getElementById("result");
+            resultDiv.textContent = ""; 
+
+            for (var i = 0; i < correctAnswers.length; i++) {
+                var question = document.querySelector('input[name="q' + (i + 1) + '"]:checked');
+                
+                if (!question) {
+                    resultDiv.textContent = "Пожалуйста, ответь на все вопросы.";
+                    resultDiv.className = "error";
+                    return;
+                }
+
+                if (question.id !== correctAnswers[i]) {
+                    resultDiv.textContent = "К сожалению, отряд травников тебе бы не подошел.";
+                    resultDiv.className = "error";
+                    return;
+                }
+            }
+            resultDiv.textContent = "Тебе очень подходит отряд травников! Если будет проходить набор или уже проходит, то обязательно прими участие.";
+            resultDiv.className = "success";
+        }
+
+        function resetAnswers() {
+            var radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(function(radio) {
+                radio.checked = false;
+            });
+            var resultDiv = document.getElementById("result");
+            resultDiv.textContent = "";
+        }
+    </script>
+
+</body>
+</html>
